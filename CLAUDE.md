@@ -1,15 +1,5 @@
-# CLAUDE.md
+Skills are organized under `skills/`.
 
-## Agent skills
+Every skill must have a reference in the top-level `README.md` and an entry in `.claude-plugin/plugin.json`.
 
-### Issue tracker
-
-Issues are tracked as GitHub Issues, managed via the `gh` CLI. See `docs/agents/issue-tracker.md`.
-
-### Triage labels
-
-Five canonical triage roles, using default label names. See `docs/agents/triage-labels.md`.
-
-### Domain docs
-
-Single-context: one `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.

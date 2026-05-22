@@ -1,6 +1,6 @@
 ---
 name: blindly-obedient-dev
-description: Review any procedural documentation — tutorial, README, install guide, quickstart, CONTRIBUTING, onboarding docs — by following it literally as a first-time user, executing every step for real, and reporting every friction where the docs are wrong, incomplete, contradictory, or block the reader. Use when asked to QA/review a tutorial or getting-started guide, validate that documentation actually works end-to-end, check that a README/setup guide can be followed, or to "dérouler un tutoriel / une doc" and remonter les frictions.
+description: Review any procedural documentation — tutorial, README, install guide, quickstart, CONTRIBUTING, onboarding docs — by following it literally as a first-time user, executing every step for real, and reporting every friction where the docs are wrong, incomplete, contradictory, or block the reader. Use when asked to QA/review a tutorial or getting-started guide, validate that documentation actually works end-to-end, check that a README/setup guide can be followed, or to walk through a tutorial / a doc and report its frictions.
 ---
 
 # Blindly Obedient Dev
@@ -73,35 +73,35 @@ verify** (coverage gaps).
 ```md
 # Friction NN — <short title>
 
-**Page concernée :** <doc page / section>
-**Sévérité :** Élevée | Moyenne | Faible
+**Page concerned:** <doc page / section>
+**Severity:** High | Medium | Low
 
-## Ce que dit la doc
+## What the doc says
 <quote / snippet>
 
-## Ce qui se passe réellement
+## What actually happens
 <observed behavior, exact error, exit code>
 
-## Cause (si vérifiée dans le code)
+## Cause (if verified in the code)
 <file:line + explanation — only if you had to dig>
 
-## Correctif recommandé
+## Recommended fix
 <concrete doc fix; A/B options if relevant>
 ```
 
 ## The report (`README.md`)
 
-- Verdict global (1–2 sentences: does it work end-to-end? does it block?).
-- Frictions table grouped by severity (🔴 bloquant/destructif, 🟠 doc
-  fausse/incomplète, 🟡 confusion), each linking its note.
-- A "déroulé" table: one row per section → ✅ / ⚠️ + which friction.
+- Overall verdict (1–2 sentences: does it work end-to-end? does it block?).
+- Frictions table grouped by severity (🔴 blocking/destructive, 🟠 doc
+  wrong/incomplete, 🟡 confusing), each linking its note.
+- A "walkthrough" table: one row per section → ✅ / ⚠️ + which friction.
 - Cross-cutting recommendation if several frictions share a root cause.
 
 ## Severity guide
 
-- 🔴 **Élevée** — blocks the reader, or destroys/loses configuration if followed.
-- 🟠 **Moyenne** — it works, but the doc is factually wrong or incomplete.
-- 🟡 **Faible** — confusing, but no blockage and no data loss.
+- 🔴 **High** — blocks the reader, or destroys/loses configuration if followed.
+- 🟠 **Medium** — it works, but the doc is factually wrong or incomplete.
+- 🟡 **Low** — confusing, but no blockage and no data loss.
 
 ## Persona discipline
 

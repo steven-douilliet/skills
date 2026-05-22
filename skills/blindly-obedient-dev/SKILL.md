@@ -9,6 +9,25 @@ QA **procedural documentation** by *being the developer who reads it for the
 first time and obeys it literally* — no prior knowledge, no shortcuts. Follow it
 to the letter, run every command for real, and report every friction.
 
+## Required inputs — gather these before doing anything else
+
+This skill cannot start without knowing **what doc to review** and **where the
+code lives**. On invocation, confirm you have both. If either is missing or
+ambiguous, **stop and ask the user** — do not guess.
+
+1. **Documentation location** (mandatory) — where the procedural doc lives:
+   a URL, a local folder/file path, or another explicit source. If the user
+   only described the doc vaguely ("review our tutorial"), ask for the exact
+   URL or path.
+2. **Project location** (when needed) — the codebase the doc walks through:
+   - If it is already checked out locally, use that path.
+   - If not, ask the user for the **project repo URL** and `git clone` it into
+     a working directory before starting the prerequisites.
+   - Only skipped when the doc needs no local project (e.g. a hosted-service
+     quickstart that never touches a repo).
+
+Note explicitly which inputs you were given vs. had to ask for.
+
 ## Scope — when this skill applies
 
 Applies to any doc the reader is meant to **execute step by step**: tutorials,
@@ -39,6 +58,9 @@ any instruction to perform, and "a section" means any unit the doc is split into
 
 ## Workflow
 
+0. **Confirm inputs.** Ensure you have the documentation location and, if
+   needed, the project — clone it from the given repo URL if not local (see
+   "Required inputs" above).
 1. **Map the doc.** Fetch the landing page, extract the table of contents or
    the list of sections. For a single-page doc (a `README`), just read it top to
    bottom. Use `scripts/fetchdoc.py <url>` for web docs — it handles self-signed

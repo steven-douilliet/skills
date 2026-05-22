@@ -70,7 +70,9 @@ instruction to perform, and "a section" means any unit the doc is split into
 2. **Read source code only when blocked**, or to back up a friction report with a
    root cause. Note explicitly that you had to.
 3. **Execute everything.** Don't assume a step works — run the command, open the
-   URL, check the output, the exit code, the rendered page.
+   URL, check the output, the exit code, the rendered page. When the doc
+   produces a **web UI**, an HTTP 200 is not proof — drive a real browser and
+   inspect the actual result (see [references/browser-verification.md](references/browser-verification.md)).
 4. **Copy snippets verbatim first.** If a snippet, applied literally, breaks or
    overwrites something — that *is* the friction. Report it, then apply the
    sensible fix to continue.
@@ -97,7 +99,14 @@ instruction to perform, and "a section" means any unit the doc is split into
      time the doc fails you — silent on something needed, misleading, or
      forcing a guess. Keep a running log of the doc parts you consulted, in
      what order, and what you searched for in vain.
-5. **Compile the report** (see below).
+5. **Verify the real result.** If the doc produced a web UI, drive a real
+   browser to confirm it actually works — not just that the URL responds.
+   Follow [references/browser-verification.md](references/browser-verification.md):
+   inspect the rendered page, console and network in both modes; in *Mission*
+   mode also reproduce the minimal user journey that proves the goal. If the
+   `chrome-devtools` MCP server is unavailable, degrade gracefully (see that
+   file).
+6. **Compile the report** (see below).
 
 ## What counts as a friction
 
@@ -111,6 +120,10 @@ instruction to perform, and "a section" means any unit the doc is split into
 - The page **contradicts another page** (reference doc, or its own snippet).
 - An incomplete diagram / structure block.
 - Anything that silently does the wrong thing (no error, wrong result).
+- A web UI that, after the doc was followed verbatim, renders blank, throws
+  console errors, has failed network requests, or whose core journey doesn't
+  work (e.g. a form that saves nothing) — the doc led the reader to a broken
+  result.
 
 Also flag, separately, **what deserves to be added/expanded** in the doc
 (undocumented mechanisms, missing wiring steps), and **what you could not
@@ -148,6 +161,8 @@ verify** (coverage gaps).
   - *Mission:* the path you took — which doc parts you consulted and in what
     order, what you searched for and could not find, and where you had to
     guess because the doc was silent.
+  - Either mode: note which web pages were verified for real in a browser vs.
+    only checked over HTTP, and link the screenshots captured as evidence.
 - Cross-cutting recommendation if several frictions share a root cause.
 
 ## Severity guide

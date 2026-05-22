@@ -1,0 +1,11 @@
+{
+  "name": "skills",
+  "version": "0.1.0",
+  "description": "A collection of agent skills.",
+  "author": {
+    "name": "steven-douilliet"
+  },
+  "skills": [
+    "./skills/blindly-obedient-dev/SKILL.md"
+  ]
+}

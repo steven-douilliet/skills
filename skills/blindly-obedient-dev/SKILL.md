@@ -1,13 +1,28 @@
 ---
 name: blindly-obedient-dev
-description: Review any procedural documentation — tutorial, README, install guide, quickstart, CONTRIBUTING, onboarding docs — by following it literally as a first-time user, executing every step for real, and reporting every friction where the docs are wrong, incomplete, contradictory, or block the reader. Use when asked to QA/review a tutorial or getting-started guide, validate that documentation actually works end-to-end, check that a README/setup guide can be followed, or to walk through a tutorial / a doc and report its frictions.
+description: QA a project's documentation by being a first-time developer who uses only the docs — no prior knowledge, no peeking at source code — and reporting every friction where the docs are wrong, incomplete, contradictory, or block the reader. Use when asked to QA/review a tutorial, README, install guide, quickstart, CONTRIBUTING or onboarding doc, validate that documentation works end-to-end, or check that a setup guide can be followed. Also use when asked to attempt a concrete goal or use-case using only a project's documentation (e.g. "use this framework to build a contact manager") to surface where the docs fail a real developer.
 ---
 
 # Blindly Obedient Dev
 
-QA **procedural documentation** by *being the developer who reads it for the
-first time and obeys it literally* — no prior knowledge, no shortcuts. Follow it
-to the letter, run every command for real, and report every friction.
+QA documentation by *being the developer who uses it for the first time* — no
+prior knowledge, no shortcuts, no peeking at the source code. Run every command
+for real and report every friction.
+
+## Two modes
+
+The skill runs in one of two modes — pick it from how you were invoked:
+
+- **Walkthrough** — the doc is procedural (tutorial, README, setup guide).
+  Follow it literally, step by step, in order. *Triggered by:* "review / walk
+  through / QA this doc".
+- **Mission** — the user gives a concrete **goal** ("use this framework to
+  build a contact manager"). Achieve it using **only the doc**, navigating the
+  doc yourself in whatever order you need. *Triggered by:* a goal or use-case
+  is supplied alongside a doc/project.
+
+If the invocation is ambiguous (a doc but no clear goal, or vice versa), **ask
+the user** which mode they want.
 
 ## Required inputs — gather these before doing anything else
 
@@ -25,22 +40,27 @@ ambiguous, **stop and ask the user** — do not guess.
      a working directory before starting the prerequisites.
    - Only skipped when the doc needs no local project (e.g. a hosted-service
      quickstart that never touches a repo).
+3. **The goal / use-case** (mandatory in **Mission** mode) — the concrete,
+   verifiable objective the developer must reach with the doc. If Mission mode
+   was triggered without a clear goal, ask the user for one.
 
 Note explicitly which inputs you were given vs. had to ask for.
 
 ## Scope — when this skill applies
 
-Applies to any doc the reader is meant to **execute step by step**: tutorials,
-`README`, install/setup guides, quickstarts, `CONTRIBUTING.md`, onboarding docs,
-how-to recipes — whether or not it is labelled "tutorial" or split into "parts".
+**Walkthrough mode** applies to any doc meant to be **executed step by step**:
+tutorials, `README`, install/setup guides, quickstarts, `CONTRIBUTING.md`,
+onboarding docs, how-to recipes. It does **not** apply to pure **reference**
+docs (API reference, config tables) or **conceptual** docs (architecture, "core
+concepts") — there is no procedure to walk.
 
-Does **not** apply to purely **reference** docs (API reference, config tables)
-or **conceptual** docs (architecture, "core concepts") — there is no procedure
-to walk. At most you can spot-check individual claims there; that is a different
-exercise.
+**Mission mode** applies to **any** doc, reference and conceptual docs
+included — the goal is what exercises them. This is precisely how to QA a
+reference doc: a real developer consults it to build something, so do exactly
+that and report wherever it falls short.
 
-Below, "the doc" means whatever procedural doc is under review, "a step" means
-any instruction to perform, and "a section" means any unit the doc is split into
+Below, "the doc" means whatever doc is under review, "a step" means any
+instruction to perform, and "a section" means any unit the doc is split into
 (a tutorial part, a README heading, a numbered step…).
 
 ## Golden rules
@@ -69,8 +89,14 @@ any instruction to perform, and "a section" means any unit the doc is split into
    index and one numbered note per friction.
 3. **Do the prerequisites** (install / bootstrap / run the stack) — these are
    part of the doc; frictions here count.
-4. **For each section, in order:** apply every step literally → verify it works
-   → log frictions as you hit them. Never skip ahead.
+4. **Do the work — depends on mode:**
+   - *Walkthrough:* for each section, **in order**, apply every step literally
+     → verify it works → log frictions as you hit them. Never skip ahead.
+   - *Mission:* work toward the goal using **only the doc**. Search the doc for
+     what you need, follow what it says literally, and log a friction every
+     time the doc fails you — silent on something needed, misleading, or
+     forcing a guess. Keep a running log of the doc parts you consulted, in
+     what order, and what you searched for in vain.
 5. **Compile the report** (see below).
 
 ## What counts as a friction
@@ -113,10 +139,15 @@ verify** (coverage gaps).
 
 ## The report (`README.md`)
 
-- Overall verdict (1–2 sentences: does it work end-to-end? does it block?).
+- Overall verdict (1–2 sentences) — *Walkthrough:* does it work end-to-end,
+  does it block? *Mission:* was the goal reachable with the doc alone?
 - Frictions table grouped by severity (🔴 blocking/destructive, 🟠 doc
   wrong/incomplete, 🟡 confusing), each linking its note.
-- A "walkthrough" table: one row per section → ✅ / ⚠️ + which friction.
+- A **journey** section:
+  - *Walkthrough:* a table, one row per section → ✅ / ⚠️ + which friction.
+  - *Mission:* the path you took — which doc parts you consulted and in what
+    order, what you searched for and could not find, and where you had to
+    guess because the doc was silent.
 - Cross-cutting recommendation if several frictions share a root cause.
 
 ## Severity guide
@@ -127,6 +158,9 @@ verify** (coverage gaps).
 
 ## Persona discipline
 
-Stay in character. Phrase findings as "a developer following this would…".
-Browse the docs like a real reader would (follow links, check the reference
-pages the doc points to — contradictions between them are prime frictions).
+Stay in character. Phrase findings as "a developer following / using this doc
+would…". Browse the docs like a real reader would (follow links, check the
+reference pages the doc points to — contradictions between them are prime
+frictions). In **Mission** mode, resist the temptation to fall back on prior
+knowledge of the framework: if the doc does not say it, you do not know it —
+that gap *is* the friction.

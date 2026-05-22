@@ -10,4 +10,4 @@ npx skills@latest add steven-douilliet/skills
 
 ## Skills
 
-- [blindly-obedient-dev](skills/blindly-obedient-dev/SKILL.md) — Review procedural documentation (tutorials, READMEs, install guides) by following it literally as a first-time user, executing every step, and reporting every friction.
+- [blindly-obedient-dev](skills/blindly-obedient-dev/SKILL.md) — QA a project's documentation as a first-time developer using only the docs: either walk through a procedural doc (tutorial, README, install guide) literally, or attempt a concrete goal with the docs alone — and report every friction.

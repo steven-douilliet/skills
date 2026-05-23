@@ -80,33 +80,13 @@ imported by the application itself.
 1. **Read the report.** Read the `README.md` index, then every friction note.
    Build a list: for each, the page concerned, the recommended fix, and your
    classification — *doc-fixable*, *needs a decision*, or *to handle in code*.
-2. **Create a branch.** `friction-fixer/<doc>-doc-fixes` off the current branch.
-   Never commit directly to the default branch.
-3. **Apply the doc-fixable frictions.** One at a time. Edit the doc file(s) per
-   the recommended fix. **One commit per friction**, message referencing the
-   note, e.g. `Fix friction 03 — wrong install flag in quickstart`.
-4. **Sanity-check each edit (static only).** Confirm the edit is well-formed —
+2. **Apply the doc-fixable frictions.** One at a time. Edit the doc file(s) per
+   the recommended fix.
+3. **Sanity-check each edit (static only).** Confirm the edit is well-formed —
    links resolve, snippet syntax is valid, no contradiction introduced with the
    rest of the doc, document structure preserved. **Do not** rebuild or re-run
    the project: end-to-end validation means re-running `blindly-obedient-dev` on
    the corrected doc, which is the user's separate step.
-5. **Open the PR** (see below). If there were no doc-fixable frictions, skip the
-   PR and report a summary instead.
-
-## The pull request
-
-One PR for the whole report. Title: short summary of the doc fixes. The
-description has four sections — always all four, even if a section is empty:
-
-1. **Frictions fixed** — one row per applied fix: friction `NN` (link to the
-   note), the doc file(s) changed, a one-line summary.
-2. **A/B decisions** — every friction where the recommended fix offered options:
-   which option you picked and why.
-3. **Not applied — needs a decision** — frictions whose fix was too vague or
-   ambiguous to apply safely. Quote the note; explain what is missing.
-4. **To handle in code** — frictions whose real fix is in application code,
-   out of scope for this skill. List them so they are not lost (they can feed a
-   separate issue-tracking step).
 
 ## Scope discipline
 
@@ -116,7 +96,5 @@ description has four sections — always all four, even if a section is empty:
 - Apply the *recommended fix*; do not invent a different or larger change. If
   the recommended fix seems wrong, that is a "needs a decision" case — flag it,
   do not improvise.
-- Every change must be reviewable: small, scoped commits, one per friction,
-  each traceable back to its note.
 - Mode-agnostic: friction notes share one format regardless of whether
   `blindly-obedient-dev` ran in Walkthrough or Mission mode.

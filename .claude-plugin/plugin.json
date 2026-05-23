@@ -6,6 +6,7 @@
     "name": "steven-douilliet"
   },
   "skills": [
-    "./skills/blindly-obedient-dev/SKILL.md"
+    "./skills/blindly-obedient-dev/SKILL.md",
+    "./skills/friction-fixer/SKILL.md"
   ]
 }
